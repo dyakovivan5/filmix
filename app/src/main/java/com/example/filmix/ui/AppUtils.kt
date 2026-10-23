@@ -1,5 +1,7 @@
 package com.example.filmix.ui
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -7,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import com.example.filmix.MovieDetailsActivity
 import com.example.filmix.R
 
 fun ComponentActivity.enableDarkEdgeToEdge() {
@@ -33,4 +36,10 @@ fun genreName(genre: String): String {
         else -> null
     }
     return if (id != null) stringResource(id) else genre
+}
+
+fun openMovie(context: Context, movieId: Int) {
+    val intent = Intent(context, MovieDetailsActivity::class.java)
+    intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, movieId)
+    context.startActivity(intent)
 }
