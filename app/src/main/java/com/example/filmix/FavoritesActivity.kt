@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import com.example.filmix.ui.components.BottomTab
 import com.example.filmix.ui.components.FilmixBottomBar
 import com.example.filmix.ui.enableDarkEdgeToEdge
+import com.example.filmix.ui.openMain
 import com.example.filmix.ui.screens.FavoritesScreen
 import com.example.filmix.ui.theme.Background
 import com.example.filmix.ui.theme.FilmixTheme
@@ -34,8 +35,8 @@ class FavoritesActivity : ComponentActivity() {
                         FilmixBottomBar(
                             selected = BottomTab.Favorites,
                             onSelect = { tab ->
-                                if (tab == BottomTab.Home) {
-                                    finish()
+                                if (tab != BottomTab.Favorites) {
+                                    openMain(this@FavoritesActivity, tab)
                                 }
                             }
                         )
